@@ -9,6 +9,17 @@ class App extends Component {
     filter: '',
   };
 
+  componentDidMount() {
+    const contactsLS = JSON.parse(localStorage.getItem('contacts')) || [];
+    this.setState({ contacts: contactsLS });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.contacts !== this.state.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts))
+    }
+  }
+
   addContact = newContact => {
     const isContact = this.state.contacts.find(
       contact => contact.name === newContact.name

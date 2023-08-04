@@ -14,6 +14,7 @@ class ContactList extends Component {
     onDeleteContact: PropTypes.func.isRequired,
   };
 
+
   render() {
     const { contacts, onDeleteContact } = this.props;
 
